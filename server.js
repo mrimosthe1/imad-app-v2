@@ -22,7 +22,9 @@ var articleOne={
         var heading=data.heading;
         var date=data.date;
         var content=data.content;
-    var htmltemplate=`<html>
+    var htmlTemplate=
+    `
+    <html>
     <head>
     <title>
     
@@ -58,7 +60,7 @@ var articleOne={
     </body>
     </html>
     `
-    return createTemplate;
+    return htmlTemplate;
     }    
 
 app.get('/', function (req, res) {
