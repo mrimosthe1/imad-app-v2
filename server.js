@@ -5,17 +5,34 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var articleOne={
-    title:"Article One",
-    heading:"Article one",
-    date:"March 19,2017",
-    content: ` <p>I dont know what this page is for but trying the features out. I dont know what this page is for but trying the features out.I dont know what this page is for but trying the features out.</p><br>
-           
-               <p>I dont know what this page is for but trying the features out. I dont know what this page is for but trying the features out.I dont know what this page is for but trying the features out.</p><br>
-           
-              <p>I dont know what this page is for but trying the features out. I dont know what this page is for but trying the features out.I dont know what this page is for but trying the features out.</p>`
-           
-}
+    var articles= {
+    'article-one': {
+        title:"Article One",
+        heading:"Article one",
+        date:"March 19,2017",
+        content: ` <p>I dont know what this page is for but trying the features out. I dont know what this page is for but trying the features out.I dont know what this page is for but trying the features out.</p><br>
+               
+                   <p>I dont know what this page is for but trying the features out. I dont know what this page is for but trying the features out.I dont know what this page is for but trying the features out.</p><br>
+               
+                  <p>I dont know what this page is for but trying the features out. I dont know what this page is for but trying the features out.I dont know what this page is for but trying the features out.</p>`
+               
+    },
+    'article-two':{   title:"Article 2",
+        heading:"Article one",
+        date:"March 1,2017",
+        content: ` <p>I dont know what this page is for but trying the features out. I dont know what this page is for but trying the features out.I dont know what this page is for but trying the features out.</p><br>
+               
+                    
+                  <p>I dont know what this page is for but trying the features out. I dont know what this page is for but trying the features out.I dont know what this page is for but trying the features out.</p>` },
+    'article-three':{title:"Article 3",
+        heading:"Article 3",
+        date:"March 9,2017",
+        content: ` <p>I dont know what this page is for but trying the features out. I dont know what this page is for but trying the features out.I dont know what this page is for but trying the features out.</p><br>
+               
+                   <p>I dont know what this page is for but trying the features out. I dont know what this page is for but trying the features out.I dont know what this page is for but trying the features out.</p><br>
+        `       
+    }
+    };
 
     function createTemplate(data){
         var title= data.title;
@@ -66,15 +83,13 @@ var articleOne={
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
-app.get('/article-one', function (req, res) {
-     res.send(createTemplate(articleOne));
+app.get('/:articleName', function (req, res) {
+    //aticleName=article-One
+    var articleName=req.params.articleName;
+     res.send(createTemplate(articles[articleName]));
+     //articles[articleName]=content object of articleOne
 });
-app.get('/article-two', function (req, res) {
-      res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
-})
-app.get('/article-three', function (req, res) {
-       res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
-})
+
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
 });
