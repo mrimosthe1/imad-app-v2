@@ -1,16 +1,13 @@
-console.log('Loaded!');
-var element=document.getElementById('main-element');
-element.innerHTML='complete two weeks today';
+//counter wala
 
-//move image
-var img=document.getElementById('madi');
-var marginLeft=0;
-function moveRight(){
-    marginleft+=10;
-    img.style.marginLeft=marginleft+'px';
-}
-img.onclick=function(){
-
-var interval=setInterval(moveRight,100);
- 
+var button=getElementById("counter");
+var counter=0;
+button.onclick=function(){
+  //make a request to counter end point
+  
+  //capture the response and store it in a variable
+  
+  //render the variable in correct span
+  var span=getElementById("count");
+  span.innerHTML=counter.toString();
 };
