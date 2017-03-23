@@ -20,7 +20,7 @@ button.onclick=function(){
    //not done yet
   }
   //make a request
-  request.open.GET('GET',"http://mrimosthe1.imad.hasura-app.io/counter",true);
+  request.open('GET',"http://mrimosthe1.imad.hasura-app.io/counter",true);
   request.send(null);
   
 };
